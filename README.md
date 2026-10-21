@@ -21,3 +21,10 @@ Professional background is based on owner-supplied details. Portfolio datasets a
 - `index.html`, `styles.css`, `script.js`: portfolio.
 - `demos/`: standalone quality, branch analysis, anomaly, and keyword retrieval demonstrations.
 - Project READMEs, runnable code, and tests live in the linked project repositories.
+
+
+## Project dictionary
+
+[Search the live Project Dictionary](https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/dictionary.html) or [read the Markdown dictionary](PROJECT_DICTIONARY.md).
+
+82 terms across all four projects, with plain-language definitions, formulas, project examples, and interpretation notes. Related concepts that are not currently measured are labeled explicitly.
