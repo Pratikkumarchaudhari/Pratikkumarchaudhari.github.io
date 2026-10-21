@@ -56,6 +56,7 @@ def schema(path, title, description):
         article={'@type':'Article','@id':url(path)+'#article','headline':post['title'],
                  'description':description,'author':{'@id':ORIGIN+'/#person'},
                  'datePublished':post['date'],'inLanguage':'en',
+                 'educationalLevel':['Beginner','Intermediate','Advanced'],
                  'mainEntityOfPage':{'@id':url(path)+'#webpage'},
                  'image':ORIGIN+'/assets/social-card.png'}
         page['mainEntity']={'@id':article['@id']}

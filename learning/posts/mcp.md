@@ -153,6 +153,69 @@ A future hands-on article can implement a local server using an official SDK and
 
 **Explain it in one breath:** “MCP standardizes how an AI application discovers and uses external capabilities. The host manages the experience, a client speaks the protocol, and the server exposes operations or context. It can connect to a RAG retriever, but it does not replace retrieval design, model reasoning or access control.”
 
+## Design a narrow tool contract {#mcp-contracts}
+
+Intermediate implementation work begins with a contract. Define exactly what the operation accepts, returns and refuses. A tool name alone is too vague for a model or another developer to use reliably.
+
+For the fictional quality-summary operation, the input contract might use this JSON Schema fragment:
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "dataset_id": {
+      "type": "string",
+      "enum": ["demo-branches", "demo-loans"]
+    }
+  },
+  "required": ["dataset_id"],
+  "additionalProperties": false
+}
+```
+
+This fragment describes arguments; it is not a complete MCP tool registration or request. A real server must validate the input and enforce whether this particular caller may read that dataset. Being a valid enum value is not proof of access.
+
+Define the result just as carefully: records, failed_records, passed_records, a named rate with its denominator, and an observation timestamp when applicable. Distinguish “no matching records” from “the source is unavailable.” Tell callers whether a result is partial or stale instead of returning a plausible-looking success.
+
+**Exercise:** write one valid argument object, one with a missing dataset ID, and one with an unexpected field. Then describe the expected validation outcome and separately describe a valid request from an unauthorized user. Validation and authorization answer different questions.
+
+## Operate across trust and failure boundaries {#mcp-operations}
+
+Advanced MCP design includes the host's policy, the server's authorization checks and the underlying system's permissions. A user-approved host action does not automatically authorize every database operation behind the server.
+
+| Boundary | Design question | Failure case |
+| --- | --- | --- |
+| Host to server | Which identity and scopes reach this endpoint? | A credential intended for one audience is accepted by another |
+| Server to downstream API | How are delegated permissions enforced? | A broad service identity bypasses the caller's restrictions |
+| Operation execution | Can the operation be retried safely? | A timed-out write is repeated and creates a duplicate action |
+| Result to model | Which content can be treated as instructions? | An external result tries to redirect the assistant's task |
+| Logs and monitoring | What can be observed without leaking data? | Credentials or sensitive result bodies are stored in ordinary logs |
+
+Use least privilege and validate tokens for the intended audience according to the applicable authorization flow. Do not reuse an arbitrary incoming token as a universal downstream credential. Tool annotations or descriptions are not substitutes for enforcement.
+
+**Idempotency** means repeating an operation has the same intended effect as doing it once. A read-only summary is different from creating a ticket or sending a message. Before retrying a consequential operation after a timeout, determine whether it already completed and whether the API supports a suitable idempotency mechanism.
+
+A timeout means the caller stopped waiting; it does not prove that execution stopped. Likewise, cancellation is not necessarily a rollback. Plan for ambiguous outcomes and record useful correlation information without exposing secrets.
+
+## Test protocol and business behavior separately {#mcp-validation}
+
+A protocol-compatible message can still produce the wrong business result. Test the interface and the operation independently, then test their combination in a supported host.
+
+| Test layer | Example evidence |
+| --- | --- |
+| Contract | Expected fields, types and rejection of unsupported arguments |
+| Protocol compatibility | Requests conform to the selected revision and supported transport |
+| Authorization | Two identities cannot read each other's restricted datasets |
+| Business logic | Returned counts reconcile and the rate uses the documented denominator |
+| Failure handling | Invalid input, source failures and timeouts remain distinguishable |
+| Interpretation | The assistant's explanation does not invent a cause or omit uncertainty |
+
+When changing SDK or protocol versions, keep a compatibility matrix for the actual host, client, server and transport. The version discussion earlier in this guide explains why blindly copying an older initialization sequence can be misleading. Run a small regression suite before migrating.
+
+For operations that change data, add tests for duplicate delivery, retries, partial failure and the audit trail. These scenarios need controlled test systems, not a production account used as a teaching sandbox.
+
+**Advanced exercise:** specify a safe operating contract for a future “create quality issue” tool: user identity, allowed fields, authorization, approval behavior, duplicate handling, failure reporting and audit data. Explain why the current browser simulator cannot establish those guarantees. This exercise is a design review; no write tool is deployed here.
+
 ## Read the primary sources {#sources}
 
 - [MCP architecture overview](https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture)

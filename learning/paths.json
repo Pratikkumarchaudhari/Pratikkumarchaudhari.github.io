@@ -1,0 +1,60 @@
+{
+  "rag": {
+    "beginner": {
+      "title": "Understand RAG without getting lost in the machinery.",
+      "description": "Start with the open-book analogy, follow one small example, and learn why evidence matters before an answer is written.",
+      "prerequisite": "No AI background or coding is required.",
+      "sections": ["what-is-rag", "architecture", "rag-first-example", "documents", "generation"],
+      "outcomes": ["Explain retrieval, augmentation and generation in everyday language.", "Trace a question to a supporting source sentence.", "Recognize when the documents do not support an answer."],
+      "practice": ["Write three fictional policy sentences and underline the one that answers a question.", "Use the architecture buttons to explain the difference between preparing documents and answering a question."],
+      "readiness": ["I can explain why a fluent answer can still be unsupported.", "I can distinguish the document collection, the retriever and the answer-writing model."]
+    },
+    "intermediate": {
+      "title": "Compare the choices inside a retrieval pipeline.",
+      "description": "Move from the idea to chunks, embeddings, stores, retrieval methods and measurable results. Use the workbenches to see what changes.",
+      "prerequisite": "You understand the three RAG stages and why source evidence matters; start with Beginner if these are new.",
+      "sections": ["chunking", "embeddings", "vector-databases", "retrieval", "ranking", "evaluation"],
+      "outcomes": ["Compare chunking strategies and explain overlap.", "Distinguish a vector database, similarity measure and search index.", "Calculate precision and recall with explicit denominators."],
+      "practice": ["Change window size and overlap, and explain which chunks keep the approval condition intact.", "Compare keyword, toy-vector and hybrid rankings for the same question; describe one tradeoff."],
+      "readiness": ["I can explain when exact wording and semantic matching help differently.", "I can separate retrieval quality from answer correctness and identify a useful baseline."]
+    },
+    "advanced": {
+      "title": "Design and evaluate a dependable RAG system.",
+      "description": "Reason about architecture, index versions, access boundaries, controlled experiments and operational tradeoffs.",
+      "prerequisite": "You can compare retrieval configurations and explain evaluation metrics; complete Intermediate first if needed.",
+      "sections": ["patterns", "rag-system-design", "rag-experiments", "practice"],
+      "outcomes": ["Design a versioned chunk/index contract with update and deletion behavior.", "Diagnose failures by pipeline stage instead of adding complexity blindly.", "Plan a held-out comparison with resource constraints and rollback criteria."],
+      "practice": ["Specify an index migration that keeps embedding versions separate and preserves source traceability.", "Design a two-by-two chunking/retrieval experiment and state what evidence would justify rollout."],
+      "readiness": ["I can distinguish relevance, authorization, grounding and operational performance.", "I can defend a design decision using measured evidence and explain what remains untested."]
+    }
+  },
+  "mcp": {
+    "beginner": {
+      "title": "Understand what MCP connects and who does what.",
+      "description": "Use the reception-desk analogy and diagrams to separate the model, host, client, server and underlying system.",
+      "prerequisite": "No programming experience is required. RAG is optional background.",
+      "sections": ["what-is-mcp", "architecture", "building-blocks", "rag-vs-mcp", "misconceptions"],
+      "outcomes": ["Define MCP as a protocol rather than a model or database.", "Distinguish tools, resources and reusable prompts.", "Explain how MCP and RAG can work together without being the same thing."],
+      "practice": ["Trace a request for a fictional report through host, client, server and data source.", "Give one example each of a tool, a resource and a prompt template."],
+      "readiness": ["I can explain why connecting a server does not automatically grant access to everything.", "I can describe a useful MCP capability without calling it a language model."]
+    },
+    "intermediate": {
+      "title": "Follow requests and design a clear tool contract.",
+      "description": "Explore request/result behavior, local and remote transports, protocol compatibility and narrow input contracts.",
+      "prerequisite": "You understand host/client/server roles and the three building blocks; use Beginner first if needed.",
+      "sections": ["request-flow", "transports", "versions", "mcp-contracts", "practice"],
+      "outcomes": ["Distinguish a tool call, a resource read and a prompt request.", "Explain schema validation separately from authorization.", "Recognize version-sensitive examples and different failure modes."],
+      "practice": ["Run the simulator for a successful call, denied request, unknown dataset and unavailable server.", "Write valid and invalid argument objects for the fictional quality-summary schema."],
+      "readiness": ["I can say which component stopped a failed request and whether execution was reached.", "I can explain why an argument schema and a protocol connection are not access-control policies."]
+    },
+    "advanced": {
+      "title": "Reason about production boundaries and compatibility.",
+      "description": "Consider identity, delegation, side effects, retries, observability and regression testing before connecting consequential operations.",
+      "prerequisite": "You can follow the request flow and design a narrow contract; complete Intermediate before this design review.",
+      "sections": ["permissions", "mcp-operations", "mcp-validation"],
+      "outcomes": ["Identify host, server and downstream authorization boundaries.", "Explain why retries, timeouts and cancellation need operation-specific handling.", "Separate protocol compatibility, business correctness and model interpretation in a test plan."],
+      "practice": ["Design a safe operating contract for a hypothetical issue-creation tool, including duplicate handling.", "Write a regression matrix for two identities, a transport failure, invalid input and an SDK/protocol migration."],
+      "readiness": ["I can explain why a timeout does not prove an operation was rolled back.", "I can identify the guarantees a browser simulation cannot establish about a real integration."]
+    }
+  }
+}

@@ -34,7 +34,7 @@ Professional background is based on owner-supplied details. Portfolio datasets a
 
 [Open the learning hub](https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/learn/) · [Read the visual RAG guide](https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/learn/rag.html) · [Posting and maintenance guide](learning/README.md)
 
-The first article includes 12 beginner lessons, accessible diagrams and three browser-only teaching experiments. Editable source lives in `learning/posts/`; future articles are registered in `learning/posts.json`. No paid API is required.
+The RAG guide includes progressive lessons, accessible diagrams and three browser-only teaching experiments. Editable source lives in `learning/posts/`; future articles are registered in `learning/posts.json`. No paid API is required.
 
 
 ### More AI learning guides and future topics
@@ -42,3 +42,10 @@ The first article includes 12 beginner lessons, accessible diagrams and three br
 [Read the MCP guide](https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/learn/mcp.html) · [Browse all published guides](https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/learn/) · [Learning roadmap](learning/ROADMAP.md)
 
 The learning hub supports topic and level filters, article search, prerequisites and related reading. Six topic tracks organize current guides and separately labeled planned study themes. Catalog entries in `learning/posts.json` drive the hub, article metadata and sitemap; `learning/topics.json` holds the track roadmap.
+
+
+### Beginner → Intermediate → Advanced
+
+Every published learning guide now has three substantive paths, with prerequisites, outcomes, exercises, readiness self-checks and next-level links. New readers start at Beginner; a selected level can be shared using `?level=beginner`, `?level=intermediate` or `?level=advanced`. Use `?level=all` for the complete guide. Existing section anchors reveal their owning level automatically. The hub opens guides at the level selected in its filter.
+
+`learning/paths.json` assigns each lesson to one level. The builder rejects missing levels or incomplete assignments, so future guides follow the same structure. These are self-directed educational paths, not graded certifications.

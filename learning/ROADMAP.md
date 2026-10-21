@@ -27,6 +27,8 @@ This order can change with study priorities. It is not a commitment to dates. St
 
 ## Article standard
 
+Every guide must contain three substantive paths: **Beginner** (plain-language intuition and worked examples), **Intermediate** (mechanics, configuration choices and experiments), and **Advanced** (system design, evaluation, operational boundaries and tradeoffs). Each path declares prerequisites, outcomes, practice and readiness self-checks in `learning/paths.json`. A title-only difficulty label is insufficient. New readers start at Beginner, but no level is locked behind an account or a test.
+
 - Begin with a plain-language definition and one fictional example.
 - Add an accurate visual when relationships are easier to see than describe.
 - Define prerequisites and link related articles without implying they are mandatory when they are not.

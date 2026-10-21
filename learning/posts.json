@@ -3,27 +3,51 @@
     "slug": "rag",
     "file": "rag.md",
     "title": "RAG, one idea at a time.",
-    "summary": "A visual beginner’s guide to retrieval-augmented generation: documents, chunks, embeddings, vector databases, retrieval, answers and evaluation.",
+    "summary": "Learn RAG through Beginner, Intermediate and Advanced paths: simple examples, visual architecture, interactive retrieval experiments and system-design tradeoffs.",
     "date": "2026-10-21",
-    "level": "Start here",
+    "level": "Beginner to Advanced",
     "track": "retrieval",
     "seo_title": "RAG Explained Simply: A Visual Guide | Pratikkumar Chaudhari",
     "prerequisites": [],
-    "related": ["mcp"],
-    "topics": ["RAG", "Chunking", "Vector databases", "Retrieval"]
+    "related": [
+      "mcp"
+    ],
+    "topics": [
+      "RAG",
+      "Chunking",
+      "Vector databases",
+      "Retrieval"
+    ],
+    "levels": [
+      "beginner",
+      "intermediate",
+      "advanced"
+    ]
   },
   {
     "slug": "mcp",
     "file": "mcp.md",
     "title": "MCP: how AI connects to useful tools.",
-    "summary": "Understand Model Context Protocol through a visual host–client–server map, tools versus resources, a fictional request simulator, and its relationship to RAG.",
+    "summary": "Learn MCP through Beginner, Intermediate and Advanced paths: host/client/server basics, request simulations, tool contracts and production trust boundaries.",
     "date": "2026-10-21",
     "reviewed": "2026-10-21",
-    "level": "Foundations",
+    "level": "Beginner to Advanced",
     "track": "connections",
-    "topics": ["MCP", "Tools", "Resources", "AI integrations"],
+    "topics": [
+      "MCP",
+      "Tools",
+      "Resources",
+      "AI integrations"
+    ],
     "seo_title": "MCP Explained Simply: Architecture & Tools | Pratikkumar Chaudhari",
     "prerequisites": [],
-    "related": ["rag"]
+    "related": [
+      "rag"
+    ],
+    "levels": [
+      "beginner",
+      "intermediate",
+      "advanced"
+    ]
   }
 ]

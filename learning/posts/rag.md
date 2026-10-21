@@ -263,6 +263,50 @@ The local implementation is documented in the [RAG repository](https://github.co
 
 **Explain it in one breath:** “RAG helps a model answer with selected external evidence. I prepare the sources, retrieve relevant passages, add them to the prompt, and evaluate whether the answer is correct and supported. I tune retrieval and generation separately.”
 
+## Follow one tiny RAG example {#rag-first-example}
+
+Start with just two sentences in a fictional handbook: “The data owner approves access.” and “The data steward fixes invalid records.” Ask: “Who can approve access?”
+
+**Step 1 — find:** choose the first sentence because it answers the approval question. **Step 2 — supply:** put that sentence next to the question in the model's input. **Step 3 — answer:** write “The data owner approves access,” and point to the handbook sentence.
+
+A chunk is simply a piece of that handbook. An embedding is a numerical representation that can help find related wording. You do not need to understand vector mathematics yet: first understand that the system must find the right evidence before writing the answer.
+
+**What could go wrong?** If the system selects the sentence about fixing records, it has found the wrong evidence. A confident answer would still be unsupported. If neither sentence answers the question, the assistant should say that the handbook does not provide enough information.
+
+**Practice without software:** write three fictional handbook sentences, ask a friend a question, and have them underline the sentence supporting their answer. You have acted out retrieval and grounding.
+
+## Design a versioned retrieval system {#rag-system-design}
+
+At advanced level, separate the **data plane** (eligible chunks and search results) from the **control decisions** (versions, access, evaluation and deployment). A correct cosine calculation does not prevent a stale policy or another tenant's document from entering context.
+
+A useful chunk contract includes document_id, document_version, chunk_id, embedding_model_id, extraction_version, source_location, effective_date and access metadata. Record which versions produced an answer. Keep a stable mapping from document versions to chunk IDs so an update or deletion can retire the right records.
+
+| Design decision | Failure to test | Evidence to collect |
+| --- | --- | --- |
+| Re-embed with a new model | Old and new vectors are accidentally mixed | Separate versioned collections and a fixed query evaluation |
+| Apply eligibility filters | Relevant but unauthorized evidence enters context | Negative access tests at retrieval and context assembly |
+| Choose candidate depth and reranking | Relevant evidence never reaches the reranker | Candidate recall before reranking, then ranking quality afterward |
+| Cap the context budget | Duplicates crowd out supporting evidence | Context token counts, source diversity and answer-support checks |
+| Retire old policy versions | Contradictory versions are treated equally | Update/deletion tests and source-version traces |
+
+A conceptual request flow is: resolve user eligibility → retrieve candidates from the selected index version → rerank eligible candidates → remove redundant context → assemble within the token budget → generate or abstain → record source/version evidence. These are design responsibilities, not a claim that every portfolio component implements them.
+
+Do not turn a retrieval score into an authorization decision. A high similarity score cannot make a document eligible. When comparing index versions, keep a rollback option and evaluate before replacing the current index.
+
+## Run a controlled RAG experiment {#rag-experiments}
+
+Treat each configuration as a complete recorded experiment: parser, chunking, embedding model, retriever, filters, candidate depth, reranker, prompt and generator. Change one major variable at a time before testing combinations.
+
+For a fictional evaluation, suppose one question has four known relevant passages. A baseline returns three passages, two relevant: precision = 2/3 and recall = 2/4. A new configuration returns three, all relevant: precision = 3/3 and recall = 3/4. That improves retrieval on this question; it does not establish overall answer correctness or improvement across all users.
+
+Use a held-out question set with identifiers, paraphrases, cross-document questions, outdated versions and unanswerable cases. Compare configurations on the same questions. Report failure categories and uncertainty when the sample is small, rather than presenting a tiny percentage as a stable system property.
+
+**Stage-specific failure diagnosis:** missing source text suggests an extraction problem; missing relevant candidates suggests retrieval or eligibility trouble; good candidates with poor ranking suggest reranking; correct context with an unsupported answer suggests generation or grounding trouble. Fix the responsible stage rather than adding an agent to every failure.
+
+Measure latency by stage and inspect slow requests, not only average response time. A larger candidate set or more model calls can improve one metric while worsening latency and resource use. Choose an operating point using the application's needs and measured evidence.
+
+**Advanced exercise:** design a comparison table for two chunking settings and two retrieval settings. State the held-out questions, relevance labels, source versions, metrics, resource budget and rollback criterion before looking at the results. This is an experiment plan, not a benchmark executed by this article.
+
 ## Read the primary sources {#sources}
 
 Original explanations and teaching examples here synthesize established concepts; product capabilities change. Use official documentation for implementation details and check the configuration of the version you actually install.
