@@ -1,0 +1,8 @@
+[
+  {"id":"foundations","title":"AI foundations","description":"Build the vocabulary before comparing tools.","planned":["Tokens and context windows","Embeddings in more depth","Prompt design and structured outputs"]},
+  {"id":"retrieval","title":"Retrieval & knowledge","description":"Find relevant evidence and evaluate grounded answers.","planned":["Hybrid search and reranking lab","RAG evaluation with a labeled dataset","Document parsing and multimodal retrieval"]},
+  {"id":"connections","title":"Protocols & connections","description":"Understand how AI applications interact with external capabilities.","planned":["Build a local read-only MCP server","MCP authorization and permission boundaries","Test an MCP integration end to end"]},
+  {"id":"agents","title":"Agents & workflows","description":"Learn when a bounded workflow needs more autonomy.","planned":["Tool calling versus agents","State, memory and planning","Multi-agent coordination and tradeoffs"]},
+  {"id":"evaluation","title":"Evaluation & governance","description":"Measure usefulness, reliability and operational controls.","planned":["Model and tool evaluation","Prompt injection and data access","Observability and human review"]},
+  {"id":"emerging","title":"Emerging AI concepts","description":"Investigate new ideas with primary references and practical tests.","planned":["Multimodal systems","Small local models and deployment","New protocols and techniques as they are studied"]}
+]

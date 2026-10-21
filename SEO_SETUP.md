@@ -1,8 +1,8 @@
 # Portfolio search visibility
 
-The primary public URL is https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/ . All eight pages use that origin for canonical URLs. The GitHub repository is a source mirror; do not change canonicals to a different host unless deliberately migrating the primary site.
+The primary public URL is https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/ . All published pages use that origin for canonical URLs. The GitHub repository is a source mirror; do not change canonicals to a different host unless deliberately migrating the primary site.
 
-Implemented: individual titles and descriptions, Person/WebSite/ProfilePage and breadcrumb JSON-LD, canonical links, index/follow directives, social sharing previews, a favicon, robots.txt, an eight-page XML sitemap, static dictionary definitions, and lightweight progressive animations that respect reduced motion. No paid service or tracking script was added. There are no fabricated reviews or ratings.
+Implemented: individual titles and descriptions, Person/WebSite/ProfilePage and breadcrumb JSON-LD, canonical links, index/follow directives, social sharing previews, a favicon, robots.txt, an automatically generated XML sitemap, static dictionary definitions, and lightweight progressive animations that respect reduced motion. No paid service or tracking script was added. There are no fabricated reviews or ratings.
 
 ## Optional owner setup in Google Search Console
 
@@ -31,3 +31,6 @@ References:
 
 
 The learning hub is at `/learn/` and the first RAG guide at `/learn/rag.html`. To regenerate learning pages, run `python scripts/build-learning.py` before updating SEO metadata. See `learning/README.md` for future posting steps.
+
+
+Published learning articles and their Article metadata are now discovered from `learning/posts.json`. New guides enter the sitemap automatically after `build-learning.py` and `update-seo.py` run. Topic tracks and planned study themes live separately in `learning/topics.json`. Local browser checks covered the learning catalog and MCP simulator; external Search Console and PageSpeed checks have not been performed.

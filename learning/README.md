@@ -2,7 +2,11 @@
 
 Public hub: https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/learn/
 
-First article: https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/learn/rag.html
+RAG: https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/learn/rag.html
+
+MCP: https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/learn/mcp.html
+
+The hub groups published guides by topic, with text search and level filters. A separately labeled study roadmap is driven by `topics.json`. See [ROADMAP.md](ROADMAP.md) for the editorial plan. Planned themes do not generate empty article pages.
 
 Share either link directly. Each section also has a stable #anchor and a copy-link button. No account or API key is required to read the guide or use its browser-only teaching experiments. There is no paid AI call, login, live vector database, or hosted Ollama dependency in this section.
 
@@ -13,10 +17,10 @@ Open [posts/rag.md](posts/rag.md) on GitHub and use Edit to update the source. T
 ## Add an article
 
 1. Create a new file in `learning/posts/`, using [POST_TEMPLATE.md](POST_TEMPLATE.md) as a starting point. Do not add the template itself to the manifest.
-2. Add its slug, filename, title, summary, ISO publication date, level and topics to `learning/posts.json`. Use a stable lowercase hyphenated slug, for example `embeddings-in-plain-english`.
+2. Add its slug, filename, title, summary, ISO publication date, level, track ID and topic tags to `learning/posts.json`. Use a stable lowercase hyphenated slug, for example `embeddings-in-plain-english`. Optional `prerequisites` and `related` contain other published article slugs; `seo_title` sets a search title. Track IDs must exist in `learning/topics.json`.
 3. Build with `python scripts/build-learning.py` from the repository root. The script works with the Site's dist directory and the flat GitHub source mirror.
-4. Register the new `learn/<slug>.html` title and description in `PAGES` in `scripts/update-seo.py`, then run `python scripts/update-seo.py`. New articles need appropriate schema metadata; do not reuse the first article's publication date or headline.
-5. Run `node --test tests/learning.test.cjs`, check links and review the content. The test detects the Site or flat GitHub layout automatically. Publish the pushed source through the Sites workflow. Existing article URLs should stay stable.
+4. Run `python scripts/update-seo.py`. It now discovers published learning articles from the same manifest, generates their Article metadata and includes them in the sitemap automatically. Supply an accurate publication date and headline for each article.
+5. Run `node --test tests/learning.test.cjs tests/mcp-learning.test.cjs` and `python -m unittest discover -s tests -p test_learning_build.py`, check links and review the content. Tests detect the Site or flat GitHub layout automatically. Publish the pushed source through the Sites workflow. Existing article URLs should stay stable.
 
 The hub automatically lists manifest entries. Article publication requires a source edit, rebuild and deployment; this is not an authenticated browser CMS. For a nontechnical update, supply your draft to Codex and ask it to add and publish a learning post.
 
@@ -31,6 +35,8 @@ Registered comments such as `<!-- lab:architecture -->` embed reviewed widget te
 | Path | Purpose |
 |---|---|
 | `learning/posts.json` | Article catalog |
+| `learning/topics.json` | Topic tracks and separately labeled planned themes |
+| `learning/ROADMAP.md` | Editorial sequence and content standards |
 | `learning/posts/*.md` | Editable article content |
 | `learning/templates/*.html` | Accessible diagrams and widget markup |
 | `scripts/build-learning.py` | Dependency-free Markdown-subset renderer and hub builder |

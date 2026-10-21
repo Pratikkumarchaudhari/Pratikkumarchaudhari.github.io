@@ -11,9 +11,7 @@ ORIGIN = 'https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site'
 NAME = 'Pratikkumar Chaudhari'
 PAGES = {
     'learn/index.html': ('AI Learning Hub | Pratikkumar Chaudhari',
-        'Learn AI in plain language with visual guides and interactive experiments. Start with RAG, chunking, embeddings, vector databases and retrieval.'),
-    'learn/rag.html': ('RAG Explained Simply: A Visual Guide | Pratikkumar Chaudhari',
-        'Understand RAG architecture with 12 beginner lessons, diagrams and interactive chunking and retrieval experiments. Explore vector stores, ranking and evaluation.'),
+        'Explore visual AI learning guides on RAG, MCP and emerging concepts. Filter published articles by topic and follow a growing beginner-friendly study roadmap.'),
     'index.html': ('Pratikkumar Chaudhari | Data Governance & Analytics Portfolio',
         'Explore Pratikkumar Chaudhari’s data governance, Snowflake, Tableau and Python experience, research publications, and hands-on analytics and AI projects.'),
     'dictionary.html': ('Data & AI Project Dictionary | Pratikkumar Chaudhari',
@@ -27,6 +25,10 @@ PAGES = {
     'demos/explainable-anomaly-monitor.html': ('Explainable Anomaly Detection | Pratikkumar Chaudhari',
         'Compare Isolation Forest and monitoring rules on synthetic data. Inspect 600 test records, false alarms, missed anomalies, explanations and evaluation metrics.'),
 }
+POSTS=json.loads((BASE/'learning/posts.json').read_text())
+ARTICLE_PAGES={'learn/'+post['slug']+'.html':post for post in POSTS}
+for path,post in ARTICLE_PAGES.items():
+    PAGES[path]=(post.get('seo_title',post['title']+' | Pratikkumar Chaudhari'),post['summary'])
 
 def url(path):
     return ORIGIN + ('/' if path == 'index.html' else '/' + path[:-10] if path.endswith('/index.html') else '/' + path)
@@ -48,11 +50,12 @@ def schema(path, title, description):
     graph = [person, website, page]
     if path == 'learn/index.html':
         page['@type']='CollectionPage'
-        page['hasPart']=[{'@type':'WebPage','url':url('learn/rag.html'),'name':'RAG, one idea at a time.'}]
-    if path == 'learn/rag.html':
-        article={'@type':'Article','@id':url(path)+'#article','headline':'RAG, one idea at a time.',
+        page['hasPart']=[{'@type':'WebPage','url':url(p),'name':post['title']} for p,post in ARTICLE_PAGES.items()]
+    if path in ARTICLE_PAGES:
+        post=ARTICLE_PAGES[path]
+        article={'@type':'Article','@id':url(path)+'#article','headline':post['title'],
                  'description':description,'author':{'@id':ORIGIN+'/#person'},
-                 'datePublished':'2026-10-21','inLanguage':'en',
+                 'datePublished':post['date'],'inLanguage':'en',
                  'mainEntityOfPage':{'@id':url(path)+'#webpage'},
                  'image':ORIGIN+'/assets/social-card.png'}
         page['mainEntity']={'@id':article['@id']}

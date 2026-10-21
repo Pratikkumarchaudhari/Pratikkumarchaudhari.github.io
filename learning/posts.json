@@ -6,6 +6,24 @@
     "summary": "A visual beginner’s guide to retrieval-augmented generation: documents, chunks, embeddings, vector databases, retrieval, answers and evaluation.",
     "date": "2026-10-21",
     "level": "Start here",
+    "track": "retrieval",
+    "seo_title": "RAG Explained Simply: A Visual Guide | Pratikkumar Chaudhari",
+    "prerequisites": [],
+    "related": ["mcp"],
     "topics": ["RAG", "Chunking", "Vector databases", "Retrieval"]
+  },
+  {
+    "slug": "mcp",
+    "file": "mcp.md",
+    "title": "MCP: how AI connects to useful tools.",
+    "summary": "Understand Model Context Protocol through a visual host–client–server map, tools versus resources, a fictional request simulator, and its relationship to RAG.",
+    "date": "2026-10-21",
+    "reviewed": "2026-10-21",
+    "level": "Foundations",
+    "track": "connections",
+    "topics": ["MCP", "Tools", "Resources", "AI integrations"],
+    "seo_title": "MCP Explained Simply: Architecture & Tools | Pratikkumar Chaudhari",
+    "prerequisites": [],
+    "related": ["rag"]
   }
 ]
