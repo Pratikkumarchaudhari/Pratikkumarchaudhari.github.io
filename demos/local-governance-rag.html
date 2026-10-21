@@ -1,5 +1,31 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Ask governance questions and inspect source-grounded extractive answers."><title>Data Governance Assistant | Live Q&A</title><link rel="stylesheet" href="governance/qa.css"></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="governance/qa.css">
+
+<!-- SEO BEGIN -->
+<title>Data Governance RAG Assistant | Pratikkumar Chaudhari</title>
+<meta name="description" content="Try source-grounded governance Q&amp;A with citations and compare browser retrieval with a local Python RAG project using Chroma, embeddings and Ollama.">
+<meta name="author" content="Pratikkumar Chaudhari">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#3155f5">
+<link rel="canonical" href="https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/demos/local-governance-rag.html">
+<link rel="icon" href="https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Pratikkumar Chaudhari — Portfolio">
+<meta property="og:title" content="Data Governance RAG Assistant | Pratikkumar Chaudhari">
+<meta property="og:description" content="Try source-grounded governance Q&amp;A with citations and compare browser retrieval with a local Python RAG project using Chroma, embeddings and Ollama.">
+<meta property="og:url" content="https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/demos/local-governance-rag.html">
+<meta property="og:image" content="https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/assets/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pratikkumar Chaudhari — Data governance, analytics and applied AI portfolio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Data Governance RAG Assistant | Pratikkumar Chaudhari">
+<meta name="twitter:description" content="Try source-grounded governance Q&amp;A with citations and compare browser retrieval with a local Python RAG project using Chroma, embeddings and Ollama.">
+<meta name="twitter:image" content="https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/assets/social-card.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/#person", "name": "Pratikkumar Chaudhari", "alternateName": "Pratik Kumar Chaudhari", "url": "https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/", "jobTitle": "Data Steward and Analyst", "sameAs": ["https://www.linkedin.com/in/pratikkumarchaudhari/", "https://github.com/Pratikkumarchaudhari"], "knowsAbout": ["Data governance", "Data quality", "Snowflake", "SQL", "Tableau", "Python", "Retrieval-augmented generation"]}, {"@type": "WebSite", "@id": "https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/#website", "url": "https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/", "name": "Pratikkumar Chaudhari | Data Governance & Analytics Portfolio", "inLanguage": "en", "publisher": {"@id": "https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/#person"}}, {"@type": "WebPage", "@id": "https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/demos/local-governance-rag.html#webpage", "url": "https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/demos/local-governance-rag.html", "name": "Data Governance RAG Assistant | Pratikkumar Chaudhari", "description": "Try source-grounded governance Q&A with citations and compare browser retrieval with a local Python RAG project using Chroma, embeddings and Ollama.", "inLanguage": "en", "isPartOf": {"@id": "https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/#website"}, "author": {"@id": "https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/#person"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Portfolio", "item": "https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/"}, {"@type": "ListItem", "position": 2, "name": "Data Governance RAG Assistant", "item": "https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/demos/local-governance-rag.html"}]}]}</script>
+<!-- SEO END -->
+</head>
 <body><a class="skip" href="#question">Skip to question</a><header><a class="brand" href="https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/#projects">PC<span>.</span> <span class="back">/ Portfolio lab</span></a><a href="https://github.com/Pratikkumarchaudhari/RAG-for-Beginners" target="_blank" rel="noopener noreferrer">View Python RAG project ↗</a></header>
 <main><div class="intro"><div><p class="eyebrow">Data governance · Live Q&A</p><h1>Ask a question.<br><span>See the evidence.</span></h1><p class="lede">Explore access approvals, data quality, and issue management. Select a suggested question or ask your own.</p></div><span class="ready"><i aria-hidden="true"></i>Ready · 3 sample documents</span></div>
 <div class="workspace"><section class="chat" aria-label="Question and answer workspace"><div class="chat-heading"><div><h2>Governance assistant</h2><p>Answers extracted from the document collection</p></div><button type="button" id="clear" class="clear">Clear</button></div><div class="conversation"><div id="welcome"><span class="assistant-icon" aria-hidden="true">✦</span><h3>What would you like to understand?</h3><p>Start with a question below. Every supported answer includes a source you can inspect.</p></div><div id="thread" aria-label="Conversation"></div></div>

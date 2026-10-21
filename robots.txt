@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/sitemap.xml
