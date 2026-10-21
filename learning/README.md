@@ -47,3 +47,8 @@ Registered comments such as `<!-- lab:architecture -->` embed reviewed widget te
 | `tests/learning.test.cjs` | Chunking, ranking and metric behavior tests |
 
 Content standards: plain-language definitions before jargon, a practical example, at least one useful visual when it clarifies the idea, tradeoffs, primary references, and a clear distinction between an implemented project and an illustrative concept. Product examples are not recommendations or pricing promises. Original educational text is developed with AI assistance; do not attribute employer records or outcomes to these examples.
+
+
+## Website reading and sharing preference
+
+The public learning pages do not offer Print / save PDF, Markdown downloads, or links to the learning source/posting guide. Share controls copy website URLs only, including the selected level. The footer directs readers to the portfolio. This is a website presentation choice, not DRM: browser printing, copying, screenshots and saving cannot be prevented completely. Existing public GitHub sources and their history remain accessible; this change does not make the repository private or revoke prior copies. Maintainer editing instructions above remain available for site maintenance.

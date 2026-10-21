@@ -15,7 +15,6 @@
     window.addEventListener('popstate',syncLevel);window.addEventListener('hashchange',syncLevel);syncLevel();
     if(location.hash&&location.hash!=='#learning-path')requestAnimationFrame(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView({block:'start'}));
   }
-  document.querySelectorAll('[data-print]').forEach(button=>{button.hidden=false;button.addEventListener('click',()=>window.print());});
   const stepTitles=['Read the documents','Split into chunks','Embed the chunks','Store searchable records','Represent the question','Retrieve relevant passages','Augment the prompt','Generate an answer'];
   const stepText=[
     'Extract readable text and keep its source information. For a scanned PDF, this may include OCR. Bad extraction cannot be repaired simply by choosing a larger model.',
