@@ -52,3 +52,10 @@ Content standards: plain-language definitions before jargon, a practical example
 ## Website reading and sharing preference
 
 The public learning pages do not offer Print / save PDF, Markdown downloads, or links to the learning source/posting guide. Share controls copy website URLs only, including the selected level. The footer directs readers to the portfolio. This is a website presentation choice, not DRM: browser printing, copying, screenshots and saving cannot be prevented completely. Existing public GitHub sources and their history remain accessible; this change does not make the repository private or revoke prior copies. Maintainer editing instructions above remain available for site maintenance.
+
+
+## Keep the dictionary synchronized
+
+When introducing a learning concept or a new guide, add its vocabulary to `learning/glossary.json` with a plain-language definition, example, scope note and website lesson link. `python scripts/update-seo.py` merges these entries by stable ID into `dictionary/terms.js`, updates the displayed count, and regenerates the static reference and `PROJECT_DICTIONARY.md`. Include the glossary, dictionary and guide changes in the same publication. Do not add a download link to the guide.
+
+The RAG architecture supports a simple overview and a detailed method map. Its detail fragment is maintained in `learning/templates/architecture-details.html` and included by the architecture template during the build. It lists common alternatives, not an exhaustive catalog or a statement that all components are implemented.

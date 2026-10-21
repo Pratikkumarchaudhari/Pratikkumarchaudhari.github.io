@@ -38,7 +38,10 @@ def render(markdown):
         if widget:
             path=SOURCE/'templates'/(widget[1]+'.html')
             if not path.exists():raise ValueError('Unknown widget '+widget[1])
-            out.append(path.read_text());i+=1;continue
+            fragment=path.read_text()
+            if '<!-- include:architecture-details -->' in fragment:
+                fragment=fragment.replace('<!-- include:architecture-details -->',(SOURCE/'templates/architecture-details.html').read_text())
+            out.append(fragment);i+=1;continue
         heading=re.fullmatch(r'## (.+?) \{#([a-z0-9-]+)\}',line)
         if heading:
             if section:out.append('</section>')

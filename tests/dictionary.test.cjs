@@ -1,10 +1,10 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
-const base=path.resolve(__dirname,'../dictionary');
+const base=path.resolve(__dirname,fs.existsSync(path.resolve(__dirname,'../dist/dictionary'))?'../dist/dictionary':'../dictionary');
 const api=require(path.join(base,'core.js'));
 const terms=vm.runInNewContext(fs.readFileSync(path.join(base,'terms.js'),'utf8')+';PROJECT_TERMS');
 test('Every term has a unique link ID and a complete project explanation',()=>{
  assert.equal(new Set(terms.map(t=>t.id)).size,terms.length);
- assert.equal(new Set(terms.map(t=>t.category)).size,5);
+ assert.ok(new Set(terms.map(t=>t.category)).size>=5);
  assert.ok(terms.length>=80);
  terms.forEach(t=>{assert.ok(t.term&&t.definition&&t.example&&t.scope);assert.match(t.id,/^[a-z0-9-]+$/);});
 });

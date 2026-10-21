@@ -21,7 +21,8 @@ function render(){
   results.forEach(term=>{
     const card=el('article','entry');card.id='term-'+term.id;
     const row=el('div','entry-meta');row.append(el('span','category-tag',term.category));
-    if(term.scope.startsWith('Related'))row.append(el('span','scope-tag','Related · not measured here'));
+    if(term.scope==='Related learning concept')row.append(el('span','scope-tag','Learning concept'));
+    else if(term.scope.startsWith('Related'))row.append(el('span','scope-tag','Related · not measured here'));
     else if(term.scope==='Local version'||term.scope==='Browser version')row.append(el('span','scope-tag',term.scope));
     card.append(row);
     const heading=el('div','term-heading');heading.append(el('h2','',term.term));const permalink=el('a','permalink','#');permalink.href='#'+card.id;permalink.setAttribute('aria-label','Direct link to '+term.term);heading.append(permalink);card.append(heading);
@@ -31,7 +32,10 @@ function render(){
     if(term.formula){content.append(el('p','detail-label','Formula / settings'),el('code','formula',term.formula));}
     content.append(el('p','detail-label','In this portfolio'),el('p','example',term.example));
     if(term.note)content.append(el('p','detail-label','Remember'),el('p','note',term.note));
-    const project=projectLinks[term.category],links=el('div','entry-links');const demo=el('a','','Open project ↗');demo.href=project.demo;const source=el('a','','Read code / guide ↗');source.href='https://github.com/Pratikkumarchaudhari/'+project.repo+'/blob/main/'+(term.scope==='Browser version'?'web-demo/governance/qa-engine.js':project.source);source.target='_blank';source.rel='noopener noreferrer';links.append(demo,source);content.append(links);detail.append(content);card.append(detail);root.append(card);
+    const links=el('div','entry-links');
+    if(term.guide){const lesson=el('a','','Read the learning guide ↗');lesson.href=term.guide;links.append(lesson);}
+    else{const project=projectLinks[term.category];const demo=el('a','','Open project ↗');demo.href=project.demo;const source=el('a','','Read code / guide ↗');source.href='https://github.com/Pratikkumarchaudhari/'+project.repo+'/blob/main/'+(term.scope==='Browser version'?'web-demo/governance/qa-engine.js':project.source);source.target='_blank';source.rel='noopener noreferrer';links.append(demo,source);}
+    content.append(links);detail.append(content);card.append(detail);root.append(card);
   });
 }
 const categories=[...new Set(terms.map(t=>t.category))].sort();categories.forEach(category=>{const o=el('option','',category);o.value=category;$('category').append(o);});

@@ -33,6 +33,8 @@ There are two related flows. **Indexing** prepares the material before questions
 
 <!-- lab:architecture -->
 
+**How to read this map:** select Simple overview for the main flow, or Detailed architecture to see method families and technology examples inside each stage. Blue project notes show the local implementation. Use the links below the map to jump to the relevant Intermediate or Advanced lesson. This is a map of common design options, not every product or an instruction to use every method together.
+
 **Indexing:** load documents, split them, embed the chunks, and store searchable records. **Answering:** represent the question, retrieve candidate passages, build a prompt, and generate an answer with source references. Reranking and evidence checks can sit between retrieval and prompt assembly.
 
 The diagram shows a common vector-based design. Keyword retrieval can replace or complement the vector route. Source text and metadata must remain available somewhere so the application can recover readable evidence from search results.

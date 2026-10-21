@@ -71,13 +71,31 @@ def schema(path, title, description):
     return {'@context':'https://schema.org','@graph':graph}
 
 def update():
+    # Merge learning vocabulary into the same dictionary on every content build.
+    terms_file=ROOT/'dictionary/terms.js'
+    terms=json.loads(terms_file.read_text().split('=',1)[1].strip().rstrip(';'))
+    glossary=BASE/'learning/glossary.json'
+    if glossary.exists():
+        merged={term['id']:term for term in terms}
+        for term in json.loads(glossary.read_text()):merged[term['id']]=term
+        terms=sorted(merged.values(),key=lambda term:(term['term'].casefold(),term['category']))
+        terms_file.write_text('const PROJECT_TERMS = '+json.dumps(terms,ensure_ascii=False,indent=2)+';\n')
+    PAGES['dictionary.html']=('Data & AI Project Dictionary | Pratikkumar Chaudhari',
+        'Explore '+str(len(terms))+' plain-language definitions, examples and formulas across portfolio projects, RAG architecture and MCP learning guides.')
+    markdown=['# Project Dictionary','Plain-language definitions, formulas and examples from portfolio projects and AI learning guides. Project examples use synthetic or fictional data; learning options are distinguished from implemented features.',
+              '[Open the searchable dictionary]('+ORIGIN+'/dictionary.html)','']
+    for term in terms:
+        markdown+=['## '+term['term'],'**Category:** '+term['category']+' · **Scope:** '+term['scope'],'',term['definition'],'']
+        if term.get('formula'):markdown+=['**Formula / settings:** '+term['formula'],'']
+        markdown+=['**Example:** '+term['example'],'','**Remember:** '+term.get('note',''),'']
+        if term.get('guide'):markdown+=['[Read the learning guide]('+ORIGIN+'/'+term['guide']+')','']
+    (BASE/'PROJECT_DICTIONARY.md').write_text('\n'.join(markdown))
     # Keep definitions readable and crawlable without requiring the interactive UI.
     dictionary=ROOT/'dictionary.html'
     content=dictionary.read_text()
     content=re.sub(r'<!-- STATIC TERMS BEGIN -->.*?<!-- STATIC TERMS END -->', '', content, flags=re.S)
-    terms=json.loads((ROOT/'dictionary/terms.js').read_text().split('=',1)[1].strip().rstrip(';'))
     definitions=''.join('<dt>'+html.escape(t['term'])+' <small>('+html.escape(t['category'])+')</small></dt><dd>'+html.escape(t['definition'])+'</dd>' for t in terms)
-    reference='<!-- STATIC TERMS BEGIN --><section class="closing static-reference"><details><summary>Browse all 82 plain-language definitions</summary><p>A text reference for reading without the interactive filters. Use the search above for formulas, project examples and interpretation notes.</p><dl>'+definitions+'</dl></details></section><!-- STATIC TERMS END -->'
+    reference='<!-- STATIC TERMS BEGIN --><section class="closing static-reference"><details><summary>Browse all '+str(len(terms))+' plain-language definitions</summary><p>A text reference for reading without the interactive filters. Use the search above for formulas, project examples and interpretation notes.</p><dl>'+definitions+'</dl></details></section><!-- STATIC TERMS END -->'
     content=content.replace('</main>',reference+'</main>',1)
     dictionary.write_text(content)
     for path,(title,description) in PAGES.items():

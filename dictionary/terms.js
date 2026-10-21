@@ -60,6 +60,17 @@ const PROJECT_TERMS = [
     "scope": "Implemented concept"
   },
   {
+    "id": "approximate-nearest-neighbor",
+    "term": "Approximate nearest-neighbor search (ANN)",
+    "category": "RAG and Q&A",
+    "definition": "Find likely nearby vectors using an index that trades some search recall for speed.",
+    "formula": "",
+    "example": "HNSW is one ANN approach shown in the store/index layer.",
+    "note": "ANN search recall is distinct from relevance recall in a labeled question evaluation.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#vector-databases"
+  },
+  {
     "id": "as-of-date",
     "term": "As-of date",
     "category": "Data quality",
@@ -118,6 +129,17 @@ const PROJECT_TERMS = [
     "example": "1,683 / 1,750 × 100 = 96.17%.",
     "note": "This is not the percentage of entirely clean records; 188 of 250 rows pass every rule.",
     "scope": "Implemented concept"
+  },
+  {
+    "id": "chroma",
+    "term": "Chroma",
+    "category": "RAG and Q&A",
+    "definition": "A vector data system with local and server deployment options.",
+    "formula": "",
+    "example": "The local RAG project stores searchable vectors and source metadata in persistent Chroma.",
+    "note": "A deployment option is separate from a distance metric or index algorithm.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#vector-databases"
   },
   {
     "id": "chunk-overlap",
@@ -230,6 +252,17 @@ const PROJECT_TERMS = [
     "scope": "Local version"
   },
   {
+    "id": "cross-encoder",
+    "term": "Cross-encoder",
+    "category": "RAG and Q&A",
+    "definition": "A model that jointly processes a pair of inputs to score their relationship.",
+    "formula": "",
+    "example": "A reranker can read a question and passage together to estimate relevance.",
+    "note": "Joint scoring is often more costly than initial vector retrieval.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#ranking"
+  },
+  {
     "id": "data-grain",
     "term": "Data grain",
     "category": "Branch analytics",
@@ -290,6 +323,28 @@ const PROJECT_TERMS = [
     "scope": "Implemented concept"
   },
   {
+    "id": "dense-embedding",
+    "term": "Dense embedding",
+    "category": "RAG and Q&A",
+    "definition": "A learned numerical representation with a fixed number of values, many of which carry information.",
+    "formula": "",
+    "example": "The local MiniLM encoder produces 384-dimensional dense vectors.",
+    "note": "Vector length alone does not make two encoders compatible.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#embeddings"
+  },
+  {
+    "id": "dense-retrieval",
+    "term": "Dense retrieval",
+    "category": "RAG and Q&A",
+    "definition": "Retrieve candidates by comparing compatible dense query and document representations.",
+    "formula": "",
+    "example": "A query about authorization may match a passage using the word approval.",
+    "note": "Semantic similarity does not prove that a passage answers the question.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#retrieval"
+  },
+  {
     "id": "deposit-reconciliation-bridge",
     "term": "Deposit reconciliation bridge",
     "category": "Branch analytics",
@@ -330,6 +385,17 @@ const PROJECT_TERMS = [
     "scope": "Implemented concept"
   },
   {
+    "id": "dot-product",
+    "term": "Dot product",
+    "category": "RAG and Q&A",
+    "definition": "Sum the pairwise products of corresponding vector coordinates.",
+    "formula": "",
+    "example": "For unit-normalized vectors, dot product equals cosine similarity.",
+    "note": "Without normalization, vector magnitudes affect the score.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#vector-databases"
+  },
+  {
     "id": "drift-diagnostic",
     "term": "Drift diagnostic",
     "category": "Anomaly detection",
@@ -338,6 +404,17 @@ const PROJECT_TERMS = [
     "example": "monitor.py reports standardized mean shifts for each feature.",
     "note": "This implementation checks mean shifts only; it is not a statistical significance test or a complete drift monitor.",
     "scope": "Implemented concept"
+  },
+  {
+    "id": "elasticsearch",
+    "term": "Elasticsearch",
+    "category": "RAG and Q&A",
+    "definition": "A search engine that supports full-text and vector-search capabilities.",
+    "formula": "",
+    "example": "The architecture map places it in the search-engine-with-vectors category.",
+    "note": "A category can overlap with other deployment or storage classifications.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#vector-databases"
   },
   {
     "id": "embedding",
@@ -358,6 +435,17 @@ const PROJECT_TERMS = [
     "example": "The sample has 9 entering and 8 exiting IDs. Together with 162 matched IDs, they explain the two annual counts.",
     "note": "Presence changes in an export are not automatically proven real branch openings or closures.",
     "scope": "Implemented concept"
+  },
+  {
+    "id": "euclidean-distance",
+    "term": "Euclidean distance",
+    "category": "RAG and Q&A",
+    "definition": "The straight-line distance between points in a vector space.",
+    "formula": "",
+    "example": "A vector-search configuration can rank smaller distances as closer matches.",
+    "note": "Distance values are not answer-confidence probabilities.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#vector-databases"
   },
   {
     "id": "exception-queue",
@@ -388,6 +476,17 @@ const PROJECT_TERMS = [
     "example": "With precision 0.64 and recall 0.6667, model F1 is approximately 0.6531.",
     "note": "F1 does not account for true negatives or unequal business costs. The code returns 0 for undefined precision/recall through zero_division=0.",
     "scope": "Implemented concept"
+  },
+  {
+    "id": "faiss",
+    "term": "FAISS",
+    "category": "RAG and Q&A",
+    "definition": "A library for efficient similarity search and clustering of dense vectors.",
+    "formula": "",
+    "example": "FAISS can supply indexing and search building blocks in an application.",
+    "note": "A search library alone is not a complete database service with all operational controls.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#vector-databases"
   },
   {
     "id": "false-negative-fn",
@@ -430,6 +529,39 @@ const PROJECT_TERMS = [
     "scope": "Implemented concept"
   },
   {
+    "id": "fixed-character-chunking",
+    "term": "Fixed-character chunking",
+    "category": "RAG and Q&A",
+    "definition": "Split text into windows measured in characters.",
+    "formula": "",
+    "example": "The local project uses 600-character windows and 100-character overlap.",
+    "note": "Character windows can cut across words or sentences.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#chunking"
+  },
+  {
+    "id": "fixed-token-chunking",
+    "term": "Fixed-token chunking",
+    "category": "RAG and Q&A",
+    "definition": "Split text using a selected tokenizer and a token budget.",
+    "formula": "",
+    "example": "An application might cap each source passage at a chosen number of model tokens.",
+    "note": "Tokens are not words; use the tokenizer appropriate to the model.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#chunking"
+  },
+  {
+    "id": "heading-aware-chunking",
+    "term": "Heading-aware chunking",
+    "category": "RAG and Q&A",
+    "definition": "Use headings or section boundaries to organize chunks.",
+    "formula": "",
+    "example": "Keep an access-policy heading with its relevant section.",
+    "note": "Very long sections may need additional splitting.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#chunking"
+  },
+  {
     "id": "held-out-test-set",
     "term": "Held-out test set",
     "category": "Anomaly detection",
@@ -460,6 +592,17 @@ const PROJECT_TERMS = [
     "scope": "Local version"
   },
   {
+    "id": "hybrid-retrieval",
+    "term": "Hybrid retrieval",
+    "category": "RAG and Q&A",
+    "definition": "Combine candidate evidence from different retrieval methods, commonly lexical and semantic.",
+    "formula": "",
+    "example": "The teaching workbench combines two rankings with reciprocal rank fusion.",
+    "note": "Hybrid retrieval is a search strategy, not necessarily an agentic architecture.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#retrieval"
+  },
+  {
     "id": "hybrid-review-flag",
     "term": "Hybrid review flag",
     "category": "Anomaly detection",
@@ -468,6 +611,17 @@ const PROJECT_TERMS = [
     "example": "Hybrid recall is 100% on this synthetic test, but precision is about 72.73%.",
     "note": "The simple rules outperform the model on deliberately obvious injected cases; do not generalize that result to real data.",
     "scope": "Implemented concept"
+  },
+  {
+    "id": "hyde",
+    "term": "Hypothetical document embeddings (HyDE)",
+    "category": "RAG and Q&A",
+    "definition": "Use a generated hypothetical answer or document as a representation for retrieval.",
+    "formula": "",
+    "example": "A model drafts a search aid, then the retriever looks for actual supporting sources.",
+    "note": "The hypothetical text is not factual evidence and must not be treated as a source.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#retrieval"
   },
   {
     "id": "indexing",
@@ -480,6 +634,17 @@ const PROJECT_TERMS = [
     "scope": "Local version"
   },
   {
+    "id": "inverted-file-index",
+    "term": "Inverted file index (IVF)",
+    "category": "RAG and Q&A",
+    "definition": "Organize vectors into partitions so a search can inspect a subset of the collection.",
+    "formula": "",
+    "example": "The map shows IVF as an indexing approach rather than a database product.",
+    "note": "Partition and search settings affect speed and approximate-search recall.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#vector-databases"
+  },
+  {
     "id": "isolation-forest",
     "term": "Isolation Forest",
     "category": "Anomaly detection",
@@ -488,6 +653,17 @@ const PROJECT_TERMS = [
     "example": "The project fits 200 trees on 1,200 synthetic normal training rows.",
     "note": "The model is compared with explicit rules; model complexity is not assumed to improve results.",
     "scope": "Implemented concept"
+  },
+  {
+    "id": "lexical-retrieval",
+    "term": "Lexical retrieval",
+    "category": "RAG and Q&A",
+    "definition": "Find and rank material using terms and their statistical relationships.",
+    "formula": "",
+    "example": "BM25 can help find a specific policy identifier that must match exactly.",
+    "note": "Lexical ranking can miss a paraphrase with very different wording.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#retrieval"
   },
   {
     "id": "matched-branch-growth",
@@ -500,6 +676,83 @@ const PROJECT_TERMS = [
     "scope": "Implemented concept"
   },
   {
+    "id": "maximum-marginal-relevance",
+    "term": "Maximum marginal relevance (MMR)",
+    "category": "RAG and Q&A",
+    "definition": "Select results by balancing query relevance with reduced similarity to already selected evidence.",
+    "formula": "",
+    "example": "A context builder can avoid returning several almost-identical passages.",
+    "note": "Diversity does not prove factual correctness.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#ranking"
+  },
+  {
+    "id": "mcp-client",
+    "term": "MCP client",
+    "category": "MCP concepts",
+    "definition": "A protocol participant managed by a host to communicate with a particular server.",
+    "formula": "",
+    "example": "A client sends the selected request and receives the server result.",
+    "note": "A client connection does not replace server-side authorization.",
+    "scope": "Related learning concept",
+    "guide": "learn/mcp.html?level=beginner#architecture"
+  },
+  {
+    "id": "mcp-host",
+    "term": "MCP host",
+    "category": "MCP concepts",
+    "definition": "The AI application coordinating model use, user experience and application policy.",
+    "formula": "",
+    "example": "The host can manage several clients that connect to different servers.",
+    "note": "The host is not the same component as the external tool server.",
+    "scope": "Related learning concept",
+    "guide": "learn/mcp.html?level=beginner#architecture"
+  },
+  {
+    "id": "mcp-prompt",
+    "term": "MCP prompt",
+    "category": "MCP concepts",
+    "definition": "A reusable instruction template exposed for a supported task.",
+    "formula": "",
+    "example": "The simulator returns a template for explaining a quality report.",
+    "note": "A prompt template is not model training and does not grant tool permissions.",
+    "scope": "Related learning concept",
+    "guide": "learn/mcp.html?level=beginner#building-blocks"
+  },
+  {
+    "id": "mcp-resource",
+    "term": "MCP resource",
+    "category": "MCP concepts",
+    "definition": "Addressable information exposed through MCP for use as context.",
+    "formula": "",
+    "example": "The simulator reads a fictional policy resource URI.",
+    "note": "A resource URI is not necessarily a normal web URL.",
+    "scope": "Related learning concept",
+    "guide": "learn/mcp.html?level=beginner#building-blocks"
+  },
+  {
+    "id": "mcp-server",
+    "term": "MCP server",
+    "category": "MCP concepts",
+    "definition": "A program exposing capabilities through MCP interfaces.",
+    "formula": "",
+    "example": "The fictional server validates a dataset ID and returns a summary.",
+    "note": "A server can be a local process; it need not be a remote cloud machine.",
+    "scope": "Related learning concept",
+    "guide": "learn/mcp.html?level=beginner#architecture"
+  },
+  {
+    "id": "mcp-tool",
+    "term": "MCP tool",
+    "category": "MCP concepts",
+    "definition": "A callable operation with described inputs exposed by an MCP server.",
+    "formula": "",
+    "example": "get_quality_summary accepts a fictional dataset identifier.",
+    "note": "A valid argument schema does not prove that the caller may access the dataset.",
+    "scope": "Related learning concept",
+    "guide": "learn/mcp.html?level=beginner#building-blocks"
+  },
+  {
     "id": "median-absolute-deviation-mad",
     "term": "Median absolute deviation (MAD)",
     "category": "Anomaly detection",
@@ -508,6 +761,72 @@ const PROJECT_TERMS = [
     "example": "Training-set MAD scales feature deviations; zero MAD is replaced by a tiny value to avoid division by zero.",
     "note": "A very small scale can produce very large z scores.",
     "scope": "Implemented concept"
+  },
+  {
+    "id": "metadata-filtering",
+    "term": "Metadata filtering",
+    "category": "RAG and Q&A",
+    "definition": "Restrict eligible records using fields stored alongside content.",
+    "formula": "",
+    "example": "Select only the permitted access group and effective policy version.",
+    "note": "A label is not enforcement unless application and storage queries actually apply it.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#documents"
+  },
+  {
+    "id": "milvus",
+    "term": "Milvus",
+    "category": "RAG and Q&A",
+    "definition": "A vector database used to store and search vector representations.",
+    "formula": "",
+    "example": "Milvus appears in the map as another dedicated vector-database example.",
+    "note": "Choose a system based on measured workload and operating needs, not name recognition.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#vector-databases"
+  },
+  {
+    "id": "model-context-protocol-mcp",
+    "term": "Model Context Protocol (MCP)",
+    "category": "MCP concepts",
+    "definition": "An open protocol for exchanging context and capabilities between an AI application and external programs.",
+    "formula": "",
+    "example": "A server can expose a fictional quality-summary operation to a supporting host.",
+    "note": "MCP is not a language model, a database, or automatic permission to access systems.",
+    "scope": "Related learning concept",
+    "guide": "learn/mcp.html?level=beginner#what-is-mcp"
+  },
+  {
+    "id": "multi-query-retrieval",
+    "term": "Multi-query retrieval",
+    "category": "RAG and Q&A",
+    "definition": "Search using several versions of a question and combine their evidence.",
+    "formula": "",
+    "example": "An application may search both the original wording and a paraphrase.",
+    "note": "Additional searches can add latency, duplicates and irrelevant candidates.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#retrieval"
+  },
+  {
+    "id": "multi-vector-representation",
+    "term": "Multi-vector representation",
+    "category": "RAG and Q&A",
+    "definition": "Represent an item using several vectors instead of one vector.",
+    "formula": "",
+    "example": "Different token-level representations can support more detailed matching.",
+    "note": "Multi-vector matching has different indexing and resource costs.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#embeddings"
+  },
+  {
+    "id": "multimodal-embedding",
+    "term": "Multimodal embedding",
+    "category": "RAG and Q&A",
+    "definition": "A representation designed for supported combinations of text, image or other modalities.",
+    "formula": "",
+    "example": "A suitable model may support searching an image collection using text.",
+    "note": "The local text-only MiniLM project is not a multimodal system.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#embeddings"
   },
   {
     "id": "net-branch-change",
@@ -550,6 +869,17 @@ const PROJECT_TERMS = [
     "scope": "Local version"
   },
   {
+    "id": "optical-character-recognition",
+    "term": "Optical character recognition (OCR)",
+    "category": "RAG and Q&A",
+    "definition": "Convert text pictured in an image into machine-readable text.",
+    "formula": "",
+    "example": "A scanned PDF may need OCR before chunking.",
+    "note": "Recognition errors can change names, numbers and retrieval behavior.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#documents"
+  },
+  {
     "id": "outer-join",
     "term": "Outer join",
     "category": "Branch analytics",
@@ -558,6 +888,39 @@ const PROJECT_TERMS = [
     "example": "The period comparison outer-joins branch_id and classifies both-side, prior-only, and latest-only records.",
     "note": "A missing period value is absence of a record, not an observed deposit of zero.",
     "scope": "Implemented concept"
+  },
+  {
+    "id": "parent-child-chunking",
+    "term": "Parent-child chunking",
+    "category": "RAG and Q&A",
+    "definition": "Search smaller child pieces while preserving links to larger parent context.",
+    "formula": "",
+    "example": "Find a precise approval sentence, then return its surrounding policy section.",
+    "note": "Returning a large parent consumes more context space.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#chunking"
+  },
+  {
+    "id": "pgvector",
+    "term": "pgvector",
+    "category": "RAG and Q&A",
+    "definition": "An extension that adds vector similarity search to PostgreSQL.",
+    "formula": "",
+    "example": "A design can keep relational data and vector retrieval in a PostgreSQL environment.",
+    "note": "pgvector is an extension, not a separate database brand replacing PostgreSQL.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#vector-databases"
+  },
+  {
+    "id": "pinecone",
+    "term": "Pinecone",
+    "category": "RAG and Q&A",
+    "definition": "A managed vector-search service.",
+    "formula": "",
+    "example": "The map uses Pinecone as an example of provider-operated vector infrastructure.",
+    "note": "Its presence in the diagram is not a free-tier promise or a recommendation to buy it.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#vector-databases"
   },
   {
     "id": "precision",
@@ -580,6 +943,17 @@ const PROJECT_TERMS = [
     "scope": "Related concept; not measured"
   },
   {
+    "id": "product-quantization",
+    "term": "Product quantization (PQ)",
+    "category": "RAG and Q&A",
+    "definition": "Compress vector representations using a codebook-based approximation.",
+    "formula": "",
+    "example": "A large collection may use compressed representations to reduce memory.",
+    "note": "Compression can change retrieval quality; it is not a similarity metric.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#vector-databases"
+  },
+  {
     "id": "prompt-augmentation",
     "term": "Prompt augmentation",
     "category": "RAG and Q&A",
@@ -588,6 +962,28 @@ const PROJECT_TERMS = [
     "example": "The local prompt includes numbered passages with source filename and page labels.",
     "note": "Prompt instructions do not guarantee the model follows them or that every generated claim is supported.",
     "scope": "Local version"
+  },
+  {
+    "id": "qdrant",
+    "term": "Qdrant",
+    "category": "RAG and Q&A",
+    "definition": "A vector database offering vector search and related filtering and hybrid-query capabilities.",
+    "formula": "",
+    "example": "The architecture map lists Qdrant as a dedicated vector-store example.",
+    "note": "It is an alternative shown for learning, not the store used by the local project.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#vector-databases"
+  },
+  {
+    "id": "query-rewriting",
+    "term": "Query rewriting",
+    "category": "RAG and Q&A",
+    "definition": "Rephrase a question into a form intended to improve retrieval.",
+    "formula": "",
+    "example": "Resolve what “it” refers to before searching a conversational follow-up.",
+    "note": "A rewrite can accidentally change intent and needs evaluation.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#retrieval"
   },
   {
     "id": "recall",
@@ -610,6 +1006,28 @@ const PROJECT_TERMS = [
     "scope": "Related concept; not measured"
   },
   {
+    "id": "reciprocal-rank-fusion",
+    "term": "Reciprocal rank fusion (RRF)",
+    "category": "RAG and Q&A",
+    "definition": "Combine ranked lists using rank positions rather than adding incomparable raw scores.",
+    "formula": "",
+    "example": "The workbench uses a sum of 1/(60 + rank) for each participating ranked list.",
+    "note": "The fusion constant and weights are design choices; this is not an accuracy guarantee.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#ranking"
+  },
+  {
+    "id": "recursive-chunking",
+    "term": "Recursive chunking",
+    "category": "RAG and Q&A",
+    "definition": "Try larger text boundaries first, then smaller boundaries for oversized pieces.",
+    "formula": "",
+    "example": "Keep a paragraph together when it fits; split it further when it exceeds the limit.",
+    "note": "Recursive splitting does not guarantee a semantic topic boundary.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#chunking"
+  },
+  {
     "id": "reproducibility",
     "term": "Reproducibility",
     "category": "Shared foundations",
@@ -618,6 +1036,17 @@ const PROJECT_TERMS = [
     "example": "The repositories include input samples, scripts, dependency versions, outputs, and automated checks.",
     "note": "A published batch report does not automatically refresh when its local input changes.",
     "scope": "Implemented concept"
+  },
+  {
+    "id": "reranking",
+    "term": "Reranking",
+    "category": "RAG and Q&A",
+    "definition": "Reorder an initial candidate set with a second relevance calculation.",
+    "formula": "",
+    "example": "A model can score the question together with each retrieved candidate before context assembly.",
+    "note": "A reranker cannot recover evidence absent from its candidate set.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#ranking"
   },
   {
     "id": "retrieval-augmented-generation-rag",
@@ -650,6 +1079,28 @@ const PROJECT_TERMS = [
     "scope": "Implemented concept"
   },
   {
+    "id": "semantic-chunking",
+    "term": "Semantic chunking",
+    "category": "RAG and Q&A",
+    "definition": "Use changes in meaning to decide where a text chunk should end.",
+    "formula": "",
+    "example": "A splitter may separate approval instructions from a later retention discussion.",
+    "note": "The local project does not implement semantic splitting; it adds computation and tuning.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#chunking"
+  },
+  {
+    "id": "sentence-chunking",
+    "term": "Sentence chunking",
+    "category": "RAG and Q&A",
+    "definition": "Group complete sentences into retrievable pieces.",
+    "formula": "",
+    "example": "The workbench can preserve each complete sentence rather than cut by word count.",
+    "note": "A sentence can depend on an earlier sentence.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#chunking"
+  },
+  {
     "id": "similarity-threshold",
     "term": "Similarity threshold",
     "category": "RAG and Q&A",
@@ -678,6 +1129,28 @@ const PROJECT_TERMS = [
     "example": "The small repository baseline reports 6/6 expected-document hits.",
     "note": "This is not generated-answer accuracy or proof that the exact necessary passage was retrieved.",
     "scope": "Implemented concept"
+  },
+  {
+    "id": "sparse-representation",
+    "term": "Sparse representation",
+    "category": "RAG and Q&A",
+    "definition": "A representation with relatively few nonzero values in a large feature space.",
+    "formula": "",
+    "example": "Term-weighted or learned sparse representations can support lexical-style retrieval.",
+    "note": "A sparse representation is not the same thing as a dense neural embedding.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#embeddings"
+  },
+  {
+    "id": "structure-aware-chunking",
+    "term": "Structure-aware chunking",
+    "category": "RAG and Q&A",
+    "definition": "Respect the structure of content such as tables, code, lists or document layout.",
+    "formula": "",
+    "example": "Keep table headers with the values they explain.",
+    "note": "A suitable parser is needed; plain text alone may lose layout.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#chunking"
   },
   {
     "id": "synthetic-data",
@@ -798,6 +1271,28 @@ const PROJECT_TERMS = [
     "example": "Chroma PersistentClient stores chunk vectors, text, filenames, page numbers, and chunk positions locally.",
     "note": "The browser demo has no vector database.",
     "scope": "Local version"
+  },
+  {
+    "id": "vector-normalization",
+    "term": "Vector normalization",
+    "category": "RAG and Q&A",
+    "definition": "Scale a vector according to a chosen rule, often to unit length.",
+    "formula": "",
+    "example": "The local project normalizes MiniLM embeddings before cosine-based retrieval.",
+    "note": "Normalization changes score interpretation; use the convention expected by the model and store.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#embeddings"
+  },
+  {
+    "id": "weaviate",
+    "term": "Weaviate",
+    "category": "RAG and Q&A",
+    "definition": "A database built around vector search and related data-management capabilities.",
+    "formula": "",
+    "example": "The map includes Weaviate among dedicated vector databases.",
+    "note": "Product capabilities depend on version and deployment; it is not implemented in this project.",
+    "scope": "Related learning concept",
+    "guide": "learn/rag.html?level=intermediate#vector-databases"
   },
   {
     "id": "weighted-average",

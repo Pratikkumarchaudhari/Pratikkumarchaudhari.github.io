@@ -43,3 +43,6 @@ Every guide must contain three substantive paths: **Beginner** (plain-language i
 The builder and SEO script read the article manifest rather than a fixed list of article pages. Add a Markdown source and manifest entry, rebuild, review, then publish through the existing Sites workflow. Topic cards show a published count and separately labeled planned themes. Do not publish empty article pages for planned ideas.
 
 Future improvements should follow observed needs: topic landing pages once a track has enough articles, a glossary spanning new terms, and deeper practice projects. Accounts, a CMS or paid infrastructure are not required for the current scope.
+
+
+Dictionary updates are part of every new topic: maintain `learning/glossary.json`, run the dictionary merge during the SEO build, verify lesson links, and publish the guide and vocabulary together.
