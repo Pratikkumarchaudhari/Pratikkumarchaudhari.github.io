@@ -28,3 +28,10 @@ Professional background is based on owner-supplied details. Portfolio datasets a
 [Search the live Project Dictionary](https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/dictionary.html) or [read the Markdown dictionary](PROJECT_DICTIONARY.md).
 
 82 terms across all four projects, with plain-language definitions, formulas, project examples, and interpretation notes. Related concepts that are not currently measured are labeled explicitly.
+
+
+## AI learning notebook
+
+[Open the learning hub](https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/learn/) · [Read the visual RAG guide](https://pratikkumar-data-ai-portfolio.woollydog11.chatgpt.site/learn/rag.html) · [Posting and maintenance guide](learning/README.md)
+
+The first article includes 12 beginner lessons, accessible diagrams and three browser-only teaching experiments. Editable source lives in `learning/posts/`; future articles are registered in `learning/posts.json`. No paid API is required.

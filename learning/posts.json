@@ -1,0 +1,11 @@
+[
+  {
+    "slug": "rag",
+    "file": "rag.md",
+    "title": "RAG, one idea at a time.",
+    "summary": "A visual beginner’s guide to retrieval-augmented generation: documents, chunks, embeddings, vector databases, retrieval, answers and evaluation.",
+    "date": "2026-10-21",
+    "level": "Start here",
+    "topics": ["RAG", "Chunking", "Vector databases", "Retrieval"]
+  }
+]
